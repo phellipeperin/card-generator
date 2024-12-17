@@ -1,0 +1,12 @@
+# Ignore artifacts:
+.idea
+.husky
+.storybook
+.vscode
+build
+cypress
+dist
+old-stories
+pipeline
+public
+coverage

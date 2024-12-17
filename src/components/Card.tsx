@@ -10,22 +10,26 @@ interface Props {
 
 const Card = ({ spell }: Props) => {
     return (
-        <div className='card'>
-            <div className='card-header'>
-                <span>{spell.name}</span>
-                <span className='badge shadow'>{spell.level}</span>
-            </div>
-            <div className='card-body'>
-                <CardDescriptionItem prefix='Tempo de Conjuração: ' content={spell.castingTime} />
-                <CardDescriptionItem prefix='Alcance: ' content={spell.range} />
-                <CardDescriptionItem prefix='Área: ' content={spell.area} />
-                <CardDescriptionItem prefix='Componentes: ' content={spell.components} />
-                <CardDescriptionItem prefix='Duração: ' content={spell.duration} />
-                <CardDescriptionItem content={spell.description} />
-                {spell.upCasting && <CardDescriptionItem prefix='Em níveis superiores: ' content={spell.upCasting} />}
-            </div>
-            <div className='card-footer'>
-                <span className=''>{translateSpellSchool(spell.school)}</span>
+        <div className={`card card--${spell.school.toLowerCase()}`}>
+            <div className='card-inner'>
+                <div className='card-header'>
+                    <span>{spell.name}</span>
+                    <div className='badge'>{spell.level}</div>
+                </div>
+                <div className='card-body'>
+                    <div className='card-inner-body'>
+                        <CardDescriptionItem prefix='Tempo de Conjuração: ' content={spell.castingTime} />
+                        <CardDescriptionItem prefix='Alcance: ' content={spell.range} />
+                        <CardDescriptionItem prefix='Área: ' content={spell.area} />
+                        <CardDescriptionItem prefix='Componentes: ' content={spell.components} />
+                        <CardDescriptionItem prefix='Duração: ' content={spell.duration} />
+                        <CardDescriptionItem content={spell.description} />
+                        {spell.upCasting && <CardDescriptionItem prefix='Em níveis superiores: ' content={spell.upCasting} />}
+                    </div>
+                </div>
+                <div className='card-footer shadow-xl'>
+                    <span className=''>{translateSpellSchool(spell.school)}</span>
+                </div>
             </div>
         </div>
     );

@@ -1,5 +1,5 @@
 .card-container {
-    --container-width: 1680px; /* in px, it will change how many cards per line are shown */
+    --container-width: 1800px; /* in px, it will change how many cards per line are shown */
     --container-items-gap: 4px; /* in px, gap between cards */
 
     display: flex;

@@ -1,23 +1,37 @@
 :root {
     /* Size */
-    --card-width: 400px; /* in px, it will change how many show up per line, adjust for printing */
+    --card-width: 340px; /* in px, it will change how many show up per line, adjust for printing */
     --card-size-ratio: 0.714; /* used to calculate the height based on the width, I used the magic ratio */
     --card-height: calc(var(--card-width) / var(--card-size-ratio)); /* result in px, you probably don't need to change anything here, touch the ratio if needed, but you can override if you wish :P */
-    /* Border */
-    --card-outer-border-width: 8px; /* in px, self-explanatory :D */
-    --card-outer-border-radius: 12px; /* in px, how rounded are the card's borders */
+    /* Outer Border */
+    --card-outer-border-width: 12px; /* in px, self-explanatory :D */
+    --card-outer-border-radius: 20px; /* in px, how rounded are the card's borders */
     --card-outer-border-color: #222; /* hex or rgb, self-explanatory :D */
+    /* Inner Border/Padding */
+    --card-inner-color: #00000033; /* rgba, is overwritten later depending on spell school, needs to have transparency for the texture to show */
+    --card-inner-border-radius: 8px; /* in px, how rounded are the card inner area is */
+    --card-inner-padding-y: 12px; /* in px, padding in y axis in between card border and elements */
+    --card-inner-padding-x: 8px; /* in px, padding in x axis in between card border and elements */
     /* Header */
     --card-header-height: 32px; /* in px, self-explanatory :D */
     --card-header-padding-y: 4px; /* in px, padding in y axis on header */
     --card-header-padding-x: 8px; /* in px, padding in x axis on header */
+    --card-header-background-color: #eaeaea; /* hex or rgb, self-explanatory :D */
+    --card-header-border-radius: 8px; /* in px, how rounded are the card header is */
+    --card-header-font-size: 16px; /* in px, self-explanatory :D */
     /* Body */
-    --card-body-padding-y: 4px; /* in px, padding in y axis on body */
+    --card-body-inset: 4px; /* in px, how much more center (the diff) than header and footer the content is, x-axis, counts on both sides */ 
+    --card-body-padding-y: 8px; /* in px, padding in y axis on body */
     --card-body-padding-x: 4px; /* in px, padding in x axis on body */
+    --card-body-background-color: #eaeaea; /* hex or rgb, self-explanatory :D */
+    --card-body-font-size: 13px; /* in px, self-explanatory :D */
     /* Footer */
     --card-footer-height: var(--card-header-height); /* in px, self-explanatory :D, default same to header */
     --card-footer-padding-y: var(--card-header-padding-y); /* in px, padding in y axis on footer, default same to header */
     --card-footer-padding-x: var(--card-header-padding-x); /* in px, padding in x axis on footer, default same to header */
+    --card-footer-background-color: #eaeaea; /* hex or rgb, self-explanatory :D */
+    --card-footer-border-radius: var(--card-header-border-radius); /* in px, how rounded are the card footer is, default same to header */
+    --card-footer-font-size: var(--card-header-font-size); /* in px, self-explanatory :D, default same to header */
 }
 
 .card {
@@ -25,20 +39,43 @@
     height: var(--card-height);
     border: var(--card-outer-border-width) solid var(--card-outer-border-color);
     border-radius: var(--card-outer-border-radius);
-    position: relative;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
 }
 
-.card-header {
-    font-family: "Cinzel", serif;
+.card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border-radius: var(--card-inner-border-radius);
+    /* background-color: var(--card-inner-color); */
+    padding: var(--card-inner-padding-y) var(--card-inner-padding-x);
+
+    background: 
+        linear-gradient(var(--card-inner-color), var(--card-inner-color)),
+        url('../assets//texture-bg.jpg');
+
+    background-size: cover;
+    background-position: center;
+}
+
+.card-header, .card-footer {
     display: flex;
     justify-content: space-between;
-    height: var(--card-header-height);
     width: 100%;
+    position: relative;
+    z-index: 9;
+}
+
+.card-header {
+    font-family: "Cinzel", serif;
+    font-size: var(--card-header-font-size);
+    height: var(--card-header-height);
     padding: var(--card-header-padding-y) var(--card-header-padding-x);
-    background-color: red;
+    background-color: var(--card-header-background-color);
+    border-radius: var(--card-header-border-radius); 
+    filter: drop-shadow(0px 0px 3px #444);  
 }
 
 .card-header .badge {
@@ -47,24 +84,64 @@
     height: calc(var(--card-header-height) - 8px);
     border-radius: 50%;
     text-align: center;
-}
-
-.card-body {
-    font-family: "Lato", cursive;
-    width: 100%;
-    height: calc(100% - var(--card-header-height) - var(--card-footer-height));
-    padding: var(--card-body-padding-y) var(--card-body-padding-x);
-    background-color: gray;
+    background-color: var(--card-header-background-color);
+    filter: drop-shadow(0px 0px 1px #444);
 }
 
 .card-footer {
-    font-family: "Lato", cursive;
-    display: flex;
-    justify-content: space-between;
-    position: absolute;
-    bottom: 0;
+    font-family: "Lato", sans-serif;
+    font-size: var(--card-footer-font-size);
     height: var(--card-footer-height);
-    width: 100%;
     padding: var(--card-footer-padding-y) var(--card-footer-padding-x);
-    background-color: blue;
+    background-color: var(--card-footer-background-color);
+    border-radius: var(--card-footer-border-radius);
+    filter: drop-shadow(0px 0px 1px #999);
+}
+
+.card-body {
+    font-family: "Lato", sans-serif;
+    font-size: var(--card-body-font-size);
+    width: 100%;
+    height: calc(100% - var(--card-header-height) - var(--card-footer-height));
+    padding: 0 var(--card-body-inset);
+    filter: drop-shadow(0px 0px 2px #333);
+}
+
+.card-inner-body {
+    height: 100%;
+    padding: var(--card-body-padding-y) var(--card-body-padding-x);
+    background-color: var(--card-body-background-color);
+}
+
+/* Variables Overrides due to School, we can use other attributes as well */
+.card--abjuration {
+    --card-inner-color: rgba(70, 130, 180, 0.6);
+}
+
+.card--conjuration {
+    --card-inner-color: rgba(34, 139, 34, 0.6);
+}
+
+.card--divination {
+    --card-inner-color: rgba(186, 85, 211, 0.6);
+}
+
+.card--enchantment {
+    --card-inner-color: rgba(255, 105, 180, 0.6);
+}
+
+.card--evocation {
+    --card-inner-color: rgba(255, 69, 0, 0.6);
+}
+
+.card--illusion {
+    --card-inner-color: rgba(72, 61, 139, 0.6);
+}
+
+.card--necromancy {
+    --card-inner-color: rgba(0, 100, 0, 0.6);
+}
+
+.card--transmutation {
+    --card-inner-color: rgba(218, 165, 32, 0.6);
 }

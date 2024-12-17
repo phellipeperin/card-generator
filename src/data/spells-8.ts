@@ -4,7 +4,7 @@ const absorbElements: SpellModel = {
     // Basic Info
     name: 'Absorb Elements',
     level: 8,
-    school: SpellSchool.ABJURATION,
+    school: SpellSchool.TRANSMUTATION,
 
     // Detailed Info
     castingTime: '1 reaction, which you take when you take acid, cold, fire, lightning, or thunder damage',

@@ -6,7 +6,7 @@ export const spellSchoolTranslationMapping = {
     [SpellSchool.DIVINATION]: 'Divinação',
     [SpellSchool.ENCHANTMENT]: 'Encantamento',
     [SpellSchool.EVOCATION]: 'Evocação',
-    [SpellSchool.ILLUSION]: 'Ilusação',
+    [SpellSchool.ILLUSION]: 'Ilusão',
     [SpellSchool.NECROMANCY]: 'Necromancia',
     [SpellSchool.TRANSMUTATION]: 'Transmutação',
 };

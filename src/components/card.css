@@ -139,7 +139,7 @@
 }
 
 .card--necromancy {
-    --card-inner-color: rgba(0, 100, 0, 0.6);
+    --card-inner-color: rgba(48, 25, 52, 0.6);
 }
 
 .card--transmutation {

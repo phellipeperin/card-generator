@@ -8,11 +8,13 @@ interface Props {
 }
 
 const CardContainer = ({ spellList }: Props) => {
-    return (<section className=''>
-        {spellList.map((spell: SpellModel) => 
-            <Card key={spell.name} spell={spell} />
-        )}
-    </section>);
+    return (
+        <section className='card-container'>
+            {spellList.map((spell: SpellModel) => (
+                <Card key={spell.name} spell={spell} />
+            ))}
+        </section>
+    );
 };
 
 export default CardContainer;

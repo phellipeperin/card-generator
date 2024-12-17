@@ -1,0 +1,70 @@
+:root {
+    /* Size */
+    --card-width: 400px; /* in px, it will change how many show up per line, adjust for printing */
+    --card-size-ratio: 0.714; /* used to calculate the height based on the width, I used the magic ratio */
+    --card-height: calc(var(--card-width) / var(--card-size-ratio)); /* result in px, you probably don't need to change anything here, touch the ratio if needed, but you can override if you wish :P */
+    /* Border */
+    --card-outer-border-width: 8px; /* in px, self-explanatory :D */
+    --card-outer-border-radius: 12px; /* in px, how rounded are the card's borders */
+    --card-outer-border-color: #222; /* hex or rgb, self-explanatory :D */
+    /* Header */
+    --card-header-height: 32px; /* in px, self-explanatory :D */
+    --card-header-padding-y: 4px; /* in px, padding in y axis on header */
+    --card-header-padding-x: 8px; /* in px, padding in x axis on header */
+    /* Body */
+    --card-body-padding-y: 4px; /* in px, padding in y axis on body */
+    --card-body-padding-x: 4px; /* in px, padding in x axis on body */
+    /* Footer */
+    --card-footer-height: var(--card-header-height); /* in px, self-explanatory :D, default same to header */
+    --card-footer-padding-y: var(--card-header-padding-y); /* in px, padding in y axis on footer, default same to header */
+    --card-footer-padding-x: var(--card-header-padding-x); /* in px, padding in x axis on footer, default same to header */
+}
+
+.card {
+    width: var(--card-width);
+    height: var(--card-height);
+    border: var(--card-outer-border-width) solid var(--card-outer-border-color);
+    border-radius: var(--card-outer-border-radius);
+    position: relative;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.card-header {
+    font-family: "Cinzel", serif;
+    display: flex;
+    justify-content: space-between;
+    height: var(--card-header-height);
+    width: 100%;
+    padding: var(--card-header-padding-y) var(--card-header-padding-x);
+    background-color: red;
+}
+
+.card-header .badge {
+    display: inline-block;
+    width: calc(var(--card-header-height) - 8px);
+    height: calc(var(--card-header-height) - 8px);
+    border-radius: 50%;
+    text-align: center;
+}
+
+.card-body {
+    font-family: "Lato", cursive;
+    width: 100%;
+    height: calc(100% - var(--card-header-height) - var(--card-footer-height));
+    padding: var(--card-body-padding-y) var(--card-body-padding-x);
+    background-color: gray;
+}
+
+.card-footer {
+    font-family: "Lato", cursive;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 0;
+    height: var(--card-footer-height);
+    width: 100%;
+    padding: var(--card-footer-padding-y) var(--card-footer-padding-x);
+    background-color: blue;
+}

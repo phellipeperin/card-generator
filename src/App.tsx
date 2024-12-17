@@ -1,13 +1,14 @@
-import { useState } from 'react'
-import './App.css'
+import { useState } from 'react';
+import spells from './data/allSpells';
+import SpellModel from './models/SpellModel';
+import CardContainer from './components/CardContainer';
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+    const [spellList] = useState<Array<SpellModel>>(spells);
 
-  return (
-    <>
-    </>
-  )
+    return (
+        <CardContainer spellList={spellList} />
+    );
 }
 
-export default App
+export default App;

@@ -1,50 +1,28 @@
-# React + TypeScript + Vite
+# Card Generator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Setup
 
-Currently, two official plugins are available:
+`npm install`
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Run
 
-## Expanding the ESLint configuration
+`npm run dev`
+Then open on your browser: <http://localhost:5173>
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Add Spells
 
-- Configure the top-level `parserOptions` property like this:
+In the data folder there are 9 files already created (one for each spell level), just create new variables like the example and add then to the exported array at the bottom of the file.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+If you want to see only specific spells on the list (for reprinting or something), you can export only the ones you want and ignore the rest.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+The full list is assembled together in the allSpells.ts inside the same folder.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+I've used a simple GPT command to generate the base of the spells, as you can see here: <https://chatgpt.com/share/6761258c-0d84-8011-8b2f-3abf0d9c3338>
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## Adjust Visuals
+
+The basic visuals are easily adjustable via properties on CSS. Just checkout the *card.css* and *card-container.css* inside the /components folder. It's pretty straight forward.
+
+## Translations
+
+There's a specific file called translations.ts inside the constants folder, you can adjust them there. If you need more, just let me know.
